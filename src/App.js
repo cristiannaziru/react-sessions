@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import './App.css';
 import Person from "./components/Person";
+import styles from "./App.module.css";
+import classNames from "classnames";
 
 
 class App extends Component {
@@ -42,42 +43,12 @@ class App extends Component {
   render() {
     const { persons, title, inputText } = this.state;
 
-
-    /*if (!!title) {
-      console.log("title:", title);
-    }
-
-    !!title && console.log("title:", title);
-
-    if (!!title) {
-      console.log("title:", title);
-    }
-    else {
-      console.log("no title");
-    }
-
-    !!title ? console.log("title:", title) : console.log("no title");*/
-
-    const titleColor = title.length < 5 ? "green" : "red";
-
-
-    const titleStyling = {
-      color: titleColor,
-      fontWeight: "bold"
-    };
-
-    if (!!title) {
-      titleStyling.color = "orange";
-    }
-
-    const titleClass = "title";
-
     return (
-      <div className="App">
-        { !!title && <h1 className={titleClass}>{title}</h1> }
+      <div className={classNames(styles.App, styles.App2, {[styles.App3]: persons.length < 3})}>
+        { !!title && <h1 className={styles.title}>{title}</h1> }
 
         <input value={inputText} onChange={this.inputChangeHandler}/>
-        <p>{inputText}</p>
+        <p className={styles.inputText}>{inputText}</p>
 
 
         <button onClick={this.addPersonHandler}>Add Person</button>
