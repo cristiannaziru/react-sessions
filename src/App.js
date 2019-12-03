@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import Person from "./components/Person";
 import styles from "./App.module.css";
 import classNames from "classnames";
+import Header from './components/Header';
+import Persons from './components/Persons';
 
 
 class App extends Component {
@@ -43,26 +44,20 @@ class App extends Component {
   render() {
     const { persons, title, inputText } = this.state;
 
+    if (!persons) {
+      throw Error("Persons is undefined");
+    }
+
     return (
       <div className={classNames(styles.App, styles.App2, {[styles.App3]: persons.length < 3})}>
-        { !!title && <h1 className={styles.title}>{title}</h1> }
+        <Header title={title}
+                inputText={inputText}
+                onInputChange={this.inputChangeHandler}
+                onAddPerson={this.addPersonHandler}/>
 
-        <input value={inputText} onChange={this.inputChangeHandler}/>
-        <p className={styles.inputText}>{inputText}</p>
-
-
-        <button onClick={this.addPersonHandler}>Add Person</button>
-        {
-          persons.map(person =>
-              <Person key={person.id}
-                      name={person.name}
-                      age={person.age}
-                      onNameClick={this.nameClickHandler.bind(this, person.name)}
-                      onNameInputChage={(event) => this.nameInputChangeHandler(event, person.id)}>
-                <p>{person.info}</p>
-              </Person>
-            )
-        }
+        <Persons persons={persons}
+                 onNameClick={this.nameClickHandler}
+                 onNameInputChage={this.nameInputChangeHandler}/>
       </div>
     );
   }
