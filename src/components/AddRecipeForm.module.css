@@ -1,0 +1,7 @@
+.label {
+  min-width: 100px;
+  text-align: right;
+  display: inline-block;
+  margin-right: 8px;
+  vertical-align: top;
+}

@@ -1,8 +1,0 @@
-.title {
-  composes: commonTitle from '../styles/common.module.css';
-}
-
-.inputText {
-  composes: title;
-  font-weight: bold;
-}

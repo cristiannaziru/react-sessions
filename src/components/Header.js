@@ -1,15 +1,14 @@
-import styles from "./header.module.css";
 import React from "react";
 
-const header = (props) => (
-  <>
-    { !!props.title && <h1 className={styles.title}>{props.title}</h1> }
+const header = (props) => {
+  const {title, description} = props;
 
-    <input value={props.inputText} onChange={props.onInputChange}/>
-    <p className={styles.inputText}>{props.inputText}</p>
-
-    <button onClick={props.onAddPerson}>Add Person</button>
-  </>
-);
+  return (
+    <>
+      <h1>{title}</h1>
+      <h2>{description}</h2>
+    </>
+  );
+};
 
 export default header;
