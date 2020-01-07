@@ -3,104 +3,52 @@ import Header from "./components/Header";
 import Recipes from "./components/Recipes";
 import AddRecipeForm from "./components/AddRecipeForm";
 import styles from "./App.module.css";
+import axios from 'axios';
 
 
 class App extends Component {
 
-  /*state = {
+  state = {
     title: "Delicious and Quick Smoothie Recipes",
     description: "Find the perfect smoothie ideas for every occasion.",
-    recipes: [
-      {
-        id: "1",
-        name: "Green Energy Smoothie",
-        ingredients: ["1 apple", "1 cup baby spinach", "1/2 squeezed lime", "1/2 avocado", "1/2 banana", "1 cup water"],
-        instructions: "Add all the ingredients to the blender. Blend until smooth. Serve in chilled glass or mug and enjoy!"
-      },
-      {
-        id: "2",
-        name: "Orange Dream Smoothie",
-        ingredients: ["1 peeled orange", "1/4 cup milk", "1/4 teaspoon vanilla extract", "a couple of ice cubes"],
-        instructions: "Throw all the ingredients into the blender and process until smooth."
-      }
-    ]
-  };*/
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      title: "Delicious and Quick Smoothie Recipes",
-      description: "Find the perfect smoothie ideas for every occasion.",
-      recipes: [
-        {
-          id: "1",
-          name: "Green Energy Smoothie",
-          ingredients: ["1 apple", "1 cup baby spinach", "1/2 squeezed lime", "1/2 avocado", "1/2 banana", "1 cup water"],
-          instructions: "Add all the ingredients to the blender. Blend until smooth. Serve in chilled glass or mug and enjoy!"
-        },
-        {
-          id: "2",
-          name: "Orange Dream Smoothie",
-          ingredients: ["1 peeled orange", "1/4 cup milk", "1/4 teaspoon vanilla extract", "a couple of ice cubes"],
-          instructions: "Throw all the ingredients into the blender and process until smooth."
-        }
-      ]
-    };
-  }
-
-  static getDerivedStateFromProps(props, state) {
-    console.log("[App] getDerivedStateFromProps");
-    return state;
-  }
-
-  getSnapshotBeforeUpdate(prevProps, prevState) {
-    console.log("[App] getSnapshotBeforeUpdate");
-  }
+    recipes: []
+  };
 
   componentDidMount() {
     console.log("[App] componentDidMount");
-  }
-
-  shouldComponentUpdate(nextProps, nextState, nextContext) {
-    console.log("[App] shouldComponentUpdate");
-    return true;
-  }
-
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    console.log("[App] componentDidUpdate");
-  }
-
-  componentWillUnmount() {
-    console.log("[App] componentWillUnmount");
+    axios.get("http://172.22.13.38:1323/recipes/5d6e10e384d3303da1547267")
+      .then(response => {
+        console.log("response:", response);
+        this.setState({ recipes: response.data });
+      })
+      .catch(error => {
+        console.log("error:", error);
+      });
   }
 
   saveRecipeHandler = (name, ingredients, instructions) => {
-    const updatedRecipes = [...this.state.recipes];
-    updatedRecipes.push({
-      id: Math.random(),
-      name,
+    axios.post("http://172.22.13.38:1323/recipes/5d6e10e384d3303da1547267", {
+      title: name,
       ingredients,
       instructions
-    });
-
-    this.setState({recipes: updatedRecipes});
+    })
+      .then(response => {
+        const recipes = [...this.state.recipes, response.data];
+        this.setState({ recipes });
+      });
   };
 
   deleteRecipeHandler = (recipeId) => {
-    const recipes = [...this.state.recipes];
-    const recipeIndex = recipes.findIndex(recipe => recipe.id === recipeId);
-
-    if (recipeIndex > -1) {
-      recipes.splice(recipeIndex, 1);
-      this.setState({recipes});
-    }
+    axios.delete(`http://172.22.13.38:1323/recipes/${recipeId}`)
+      .then(response => {
+        const recipes = [...this.state.recipes];
+        const filteredReciped = recipes.filter(recipe => recipe.id !== recipeId);
+        this.setState({ recipes: filteredReciped });
+      });
   };
 
   render() {
     const {recipes, title, description} = this.state;
-
-    console.log("[App] render");
 
     return (
       <div className={styles.app}>

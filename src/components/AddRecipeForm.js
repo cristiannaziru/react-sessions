@@ -10,32 +10,6 @@ class AddRecipeForm extends PureComponent {
     instructionsInput: ""
   };
 
-  constructor(props) {
-    super(props);
-    console.log("[ApAddRecipeFormp] constructor");
-  }
-
-  static getDerivedStateFromProps(props, state) {
-    console.log("[ApAddRecipeFormp] getDerivedStateFromProps");
-    return state;
-  }
-
-  getSnapshotBeforeUpdate(prevProps, prevState) {
-    console.log("[AAddRecipeFormpp] getSnapshotBeforeUpdate");
-  }
-
-  componentDidMount() {
-    console.log("[AddRecipeForm] componentDidMount");
-  }
-
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    console.log("[AddRecipeForm] componentDidUpdate");
-  }
-
-  componentWillUnmount() {
-    console.log("[AddRecipeForm] componentWillUnmount");
-  }
-
   nameInputChangeHandler = (event) => {
     this.setState({ nameInput: event.target.value });
   };
