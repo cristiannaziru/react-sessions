@@ -1,4 +1,4 @@
-import React, { Component, PureComponent } from "react";
+import React, { PureComponent } from "react";
 import styles from "./AddRecipeForm.module.css";
 
 class AddRecipeForm extends PureComponent {
@@ -44,8 +44,6 @@ class AddRecipeForm extends PureComponent {
 
   render() {
     const { editing, nameInput, ingredientsInput, instructionsInput } = this.state;
-
-    console.log("[AddRecipeForm] render");
 
     return (
       editing
