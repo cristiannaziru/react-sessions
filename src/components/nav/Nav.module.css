@@ -12,6 +12,6 @@
     color: coral;
 }
 
-:global(.active) {
-    color: coral !important;
+.navigation .active {
+    color: coral;
 }

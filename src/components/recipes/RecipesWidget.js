@@ -48,6 +48,10 @@ class RecipesWidget extends Component {
       });
   };
 
+  recipeClickHandler = (id) => {
+    this.props.history.push(`/app/recipes/${id}`);
+  };
+
   render() {
     const {recipes, title, description} = this.state;
 
@@ -56,6 +60,7 @@ class RecipesWidget extends Component {
         <Header title={title}
                 description={description}/>
         <RecipeList recipes={recipes}
+                    onRecipeClick={ this.recipeClickHandler }
                     onDeleteRecipe={this.deleteRecipeHandler}/>
         <AddRecipeForm onSaveRecipe={this.saveRecipeHandler}/>
       </>
