@@ -22,10 +22,7 @@ class RegisterForm extends Component {
         password: this.state.passwordInput
       })
       .then(response => {
-        this.setState({
-          emailInput: "",
-          passwordInput: ""
-        });
+          this.props.history.push("/login");
       })
       .catch(error => {
         console.log("register error:", error);
