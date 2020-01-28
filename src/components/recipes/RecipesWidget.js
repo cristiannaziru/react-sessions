@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import axios from "axios";
 import Header from "./Header";
-import Recipes from "./Recipes";
+import RecipeList from "./RecipeList";
 import AddRecipeForm from "./AddRecipeForm";
 
 
@@ -55,8 +55,8 @@ class RecipesWidget extends Component {
       <>
         <Header title={title}
                 description={description}/>
-        <Recipes recipes={recipes}
-                 onDeleteRecipe={this.deleteRecipeHandler}/>
+        <RecipeList recipes={recipes}
+                    onDeleteRecipe={this.deleteRecipeHandler}/>
         <AddRecipeForm onSaveRecipe={this.saveRecipeHandler}/>
       </>
     );

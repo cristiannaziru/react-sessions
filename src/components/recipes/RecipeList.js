@@ -1,8 +1,8 @@
 import Recipe from "./Recipe";
 import React from "react";
-import styles from "./Recipes.module.css";
+import styles from "./RecipeList.module.css";
 
-const recipes = (props) => {
+const recipeList = (props) => {
   const {recipes, onDeleteRecipe} = props;
 
   return (
@@ -20,4 +20,4 @@ const recipes = (props) => {
   );
 };
 
-export default recipes;
+export default recipeList;

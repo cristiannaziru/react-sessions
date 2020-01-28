@@ -9,10 +9,6 @@ class LoginForm extends Component {
     passwordInput: "123"
   };
 
-  /*componentDidMount() {
-    console.log("[LoginForm] componentDidMount // props:", this.props);
-  }*/
-
   emailInputChangeHandler = (event) => {
     this.setState({ emailInput: event.target.value });
   };
@@ -28,7 +24,7 @@ class LoginForm extends Component {
     })
       .then(response => {
         localStorage.setItem("userID", response.data.id);
-        this.props.history.push("/recipes");
+        this.props.history.push("/app/recipes");
       })
       .catch(error => {
         console.log("login error:", error);
