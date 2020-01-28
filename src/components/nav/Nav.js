@@ -12,12 +12,12 @@ class Nav extends Component {
     render() {
         return (
             <div className={styles.navigation}>
-                <NavLink to="/recipes">Recipes</NavLink>
-                <NavLink to="/todo">Todo</NavLink>
+                <NavLink to="/app/recipes">Recipes</NavLink>
+                <NavLink to="/app/todo">Todo</NavLink>
                 <button onClick={this.handleLogoutClick}>Logout</button>
             </div>
         );
     }
-};
+}
 
 export default Nav;
