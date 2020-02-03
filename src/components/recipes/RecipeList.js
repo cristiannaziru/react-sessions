@@ -1,9 +1,9 @@
 import Recipe from "./Recipe";
 import React from "react";
-import styles from "./Recipes.module.css";
+import styles from "./RecipeList.module.css";
 
-const recipes = (props) => {
-  const {recipes, onDeleteRecipe} = props;
+const recipeList = (props) => {
+  const {recipes, onDeleteRecipe, onRecipeClick} = props;
 
   return (
     <div className={styles.recipes}>
@@ -12,6 +12,7 @@ const recipes = (props) => {
         ? recipes.map(recipe =>
           <Recipe key={recipe.id}
                   recipe={recipe}
+                  onRecipeClick={() => onRecipeClick(recipe.id)}
                   onDeleteRecipe={onDeleteRecipe}>
           </Recipe>)
         : <p>There are no recipes at this time. Please use the button below to add them.</p>
@@ -20,4 +21,4 @@ const recipes = (props) => {
   );
 };
 
-export default recipes;
+export default recipeList;
