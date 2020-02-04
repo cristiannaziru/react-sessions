@@ -18,7 +18,6 @@ class App extends Component {
           <Route path="/login" component={LoginForm} />
           <Route path="/register" component={RegisterForm} />
           <Route exact path="/" render={() => <Redirect to="/app" />} />
-          <PrivateRoute path="/app" component={Nav} />
           <PrivateRoute path="/app/recipes" exact component={RecipesWidget} />
           <PrivateRoute path="/app/recipes/:id" component={RecipeDetails} />
           <PrivateRoute path="/app/todo" component={TodoWidget} />

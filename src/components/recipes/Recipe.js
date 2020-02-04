@@ -1,16 +1,24 @@
-import React from "react";
+import React, {Component} from "react";
 import styles from "./Recipe.module.css";
+import {withRouter} from 'react-router-dom';
 
-const recipe = (props) => {
-  const { recipe, onDeleteRecipe, onRecipeClick } = props;
+class Recipe extends Component {
 
-  return (
-    <div className={styles.recipe} onClick={onRecipeClick}>
-      <h3>{recipe.title}</h3>
-      <button onClick={() => onDeleteRecipe(recipe.id)}>Delete Recipe</button>
-    </div>
-  )
+  clickHandler = () => {
+    this.props.history.push(`/app/recipes/${this.props.recipe.id}`);
+  };
+
+  render() {
+    const { recipe, onDeleteRecipe } = this.props;
+
+    return (
+      <div className={styles.recipe} onClick={ this.clickHandler }>
+        <h3>{recipe.title}</h3>
+        <button onClick={() => onDeleteRecipe(recipe.id)}>Delete Recipe</button>
+      </div>
+    )
+  }
 };
 
-export default recipe;
+export default withRouter(Recipe);
 

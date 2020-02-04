@@ -3,6 +3,7 @@ import axios from "axios";
 import Header from "./Header";
 import RecipeList from "./RecipeList";
 import AddRecipeForm from "./AddRecipeForm";
+import withNavBar from "../../HOCs/withNavBar";
 
 
 class RecipesWidget extends Component {
@@ -48,9 +49,9 @@ class RecipesWidget extends Component {
       });
   };
 
-  recipeClickHandler = (id) => {
+  /*recipeClickHandler = (id) => {
     this.props.history.push(`/app/recipes/${id}`);
-  };
+  };*/
 
   render() {
     const {recipes, title, description} = this.state;
@@ -60,7 +61,6 @@ class RecipesWidget extends Component {
         <Header title={title}
                 description={description}/>
         <RecipeList recipes={recipes}
-                    onRecipeClick={ this.recipeClickHandler }
                     onDeleteRecipe={this.deleteRecipeHandler}/>
         <AddRecipeForm onSaveRecipe={this.saveRecipeHandler}/>
       </>
@@ -68,4 +68,4 @@ class RecipesWidget extends Component {
   }
 }
 
-export default RecipesWidget;
+export default withNavBar(RecipesWidget);
