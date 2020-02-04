@@ -16,10 +16,10 @@ class RecipesWidget extends Component {
 
   componentDidMount() {
     const userID = localStorage.getItem("userID");
+
     axios
       .get(`http://172.22.13.38:1323/recipes/${userID}`)
       .then(response => {
-        console.log("response:", response);
         this.setState({ recipes: response.data });
       })
       .catch(error => {
@@ -48,10 +48,6 @@ class RecipesWidget extends Component {
         this.setState({ recipes: filteredReciped });
       });
   };
-
-  /*recipeClickHandler = (id) => {
-    this.props.history.push(`/app/recipes/${id}`);
-  };*/
 
   render() {
     const {recipes, title, description} = this.state;

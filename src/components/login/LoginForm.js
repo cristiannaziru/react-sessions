@@ -24,7 +24,7 @@ class LoginForm extends Component {
     })
       .then(response => {
         localStorage.setItem("userID", response.data.id);
-        this.props.history.push("/app/recipes");
+        this.props.history.push("/recipes");
       })
       .catch(error => {
         console.log("login error:", error);

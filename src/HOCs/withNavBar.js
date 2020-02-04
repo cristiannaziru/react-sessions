@@ -14,8 +14,8 @@ const withNavBar = (WrappedComponent) => {
       return (
         <>
           <div className={styles.navigation}>
-            <NavLink to="/app/recipes" activeClassName={styles.active}>Recipes</NavLink>
-            <NavLink to="/app/todo" activeClassName={styles.active}>Todo</NavLink>
+            <NavLink to="/recipes" activeClassName={styles.active}>Recipes</NavLink>
+            <NavLink to="/todo" activeClassName={styles.active}>Todo</NavLink>
             <button onClick={this.handleLogoutClick}>Logout</button>
           </div>
           <WrappedComponent {...this.props}/>

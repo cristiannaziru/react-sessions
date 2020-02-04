@@ -5,7 +5,7 @@ import {withRouter} from 'react-router-dom';
 class Recipe extends Component {
 
   clickHandler = () => {
-    this.props.history.push(`/app/recipes/${this.props.recipe.id}`);
+    this.props.history.push(`/recipes/${this.props.recipe.id}`);
   };
 
   render() {
