@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import styles from "./withNavBar.module.css";
 import {NavLink} from "react-router-dom";
 
-const withNavBar = (WrappedComponent) => {
+const withNavBar = (WrappedComponent, hideLogoutBtn) => {
   return class extends Component {
 
     handleLogoutClick = () => {
@@ -16,7 +16,7 @@ const withNavBar = (WrappedComponent) => {
           <div className={styles.navigation}>
             <NavLink to="/recipes" activeClassName={styles.active}>Recipes</NavLink>
             <NavLink to="/todo" activeClassName={styles.active}>Todo</NavLink>
-            <button onClick={this.handleLogoutClick}>Logout</button>
+            { !hideLogoutBtn && <button onClick={this.handleLogoutClick}>Logout</button> }
           </div>
           <WrappedComponent {...this.props}/>
         </>

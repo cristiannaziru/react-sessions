@@ -42,4 +42,4 @@ class RecipeDetails extends Component {
   }
 }
 
-export default withNavBar(RecipeDetails);
+export default withNavBar(RecipeDetails, true);
