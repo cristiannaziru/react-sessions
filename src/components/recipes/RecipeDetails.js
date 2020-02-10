@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import styles from "./Recipe.module.css";
 import axios from 'axios';
+import withNavBar from "../../HOCs/withNavBar";
 
 class RecipeDetails extends Component {
 
@@ -41,4 +42,4 @@ class RecipeDetails extends Component {
   }
 }
 
-export default RecipeDetails;
+export default withNavBar(RecipeDetails, true);
